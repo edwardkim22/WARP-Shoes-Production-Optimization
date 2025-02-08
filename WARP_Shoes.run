@@ -1,10 +1,7 @@
-#Jaden_Hinds_hindsjad_1009903669
-#Edward_Kim_kimedwa9_1010013593
-
 reset;
 
-model hindsjad_kimedwa9.mod;
-data hindsjad_kimedwa9.dat;
+model WARP_Shoes.mod;
+data WARP_Shoes.dat;
 
 option solver gurobi;
 
@@ -17,8 +14,6 @@ solve;
 # Step 4: Round the solution
 let {n in PN} x[n] := if x[n] - floor(x[n]) >= 0.5 then ceil(x[n]) else floor(x[n]);
 
-display profit, _nvars, _ncons, x, w_used, co1, co2, co3, co4, co1.slack, co2.slack, co3.slack, co4.slack, co4.dual> hindsjad_kimedwa9.out;
+display profit, _nvars, _ncons, x, w_used, co1, co2, co3, co4, co1.slack, co2.slack, co3.slack, co4.slack, co4.dual> WARP_Shoes.out;
 
-close hindsjad_kimedwa9.out;
-
-
+close WARP_Shoes.out;
