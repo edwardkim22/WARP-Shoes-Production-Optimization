@@ -1,0 +1,24 @@
+#Jaden_Hinds_hindsjad_1009903669
+#Edward_Kim_kimedwa9_1010013593
+
+reset;
+
+model hindsjad_kimedwa9.mod;
+data hindsjad_kimedwa9.dat;
+
+option solver gurobi;
+
+# Step 2: Relax the integer constraints
+let {n in PN} x[n].relax := 1;  # Assuming x[i] are your integer variables
+
+# Step 3: Solve the relaxed LP model
+solve;
+
+# Step 4: Round the solution
+let {n in PN} x[n] := if x[n] - floor(x[n]) >= 0.5 then ceil(x[n]) else floor(x[n]);
+
+display profit, _nvars, _ncons, x, w_used, co1, co2, co3, co4, co1.slack, co2.slack, co3.slack, co4.slack, co4.dual> hindsjad_kimedwa9.out;
+
+close hindsjad_kimedwa9.out;
+
+
