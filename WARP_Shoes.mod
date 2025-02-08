@@ -1,6 +1,3 @@
-#Jaden_Hinds_hindsjad_1009903669
-#Edward_Kim_kimedwa9_1010013593
-
 reset;
 
 #sets
@@ -53,10 +50,3 @@ subject to co1: (sum{n in PN} sum{rm in RM} c[rm]*q[n, rm]*x[n]) <= bom_budget; 
 subject to co2{m in M}: (sum{n in PN} a[n, m]*x[n]) <= max_sec; #max working hours per week
 subject to co3{rm in RM}: (sum{n in PN} q[n, rm]*x[n]) <= max_supply[rm]; #max supply of materials
 subject to co4{n in PN}: x[n] <= (sum{w in WN} (w_cap[w] * w_used[w])); #max warehouse capacity
-
-
-
-
-
-
-
