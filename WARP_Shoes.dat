@@ -1,6 +1,3 @@
-#Jaden_Hinds_hindsjad_1009903669
-#Edward_Kim_kimedwa9_1010013593
-
 #calling the tables
 table table1 "ODBC" "./WARP2011W.mdb" "Product_Master":
 	PN <- [Product_Num], sp ~ Sales_Price;
@@ -29,4 +26,3 @@ read table table6;
 table table7 "ODBC" "./WARP2011W.mdb" "Warehouse_Master":
 	WN <- [Warehouse_Num], w_cap ~ Capacity, w_op ~ Op_Cost;
 read table table7;
-
