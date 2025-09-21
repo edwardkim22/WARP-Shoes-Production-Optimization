@@ -1,7 +1,44 @@
-# WARP-Shoes-Production-Optimization
+# WARP Shoe Company Production Optimization
 
-This project optimizes WARP Shoe Company’s production schedule using mixed integer programming in **AMPL**, solved with **Gurobi**. The objective is to maximize profitability while satisfying constraints on raw material availability, machine capacity, warehouse storage, labor costs and unmet demand penalties. Historical demand data was extracted from a Microsoft Access (.mdb) database using **Java** and **SQL**, with linear regression applied to estimate missing values for February 2006 demand forecasting. The model determines optimal production quantities while enforcing operational limits. Due to computational complexity, the mixed integer program was relaxed into a linear program, with integer rounded solutions analyzed for feasibility.
+## Problem Background
 
-The primary binding constraint was raw material availability, restricting feasible production levels. Shadow price analysis quantified the marginal benefit of increasing raw material supply, while scenario analysis evaluated the impact of reducing machine hours, expanding warehouse storage and increasing the budget. Results showed that reducing machine hours affected feasibility, additional warehouse space was unnecessary and increasing the budget alone had no impact without greater raw material supply. Key Performance Indicators such as profit margins, machine efficiency and inventory utilization were used to assess different production strategies.
+WARP Shoe Company faced a production crisis in early 2006 when a major competitor went bankrupt, creating an opportunity with doubled market demand. With zero starting inventory and limited resources, the company needed an optimal production schedule for February 2006 to maximize profitability.
 
-The **AMPL** model consists of `ampl.mod` (model definition), `ampl.dat` (data input), `ampl.run` (execution script) and `ampl.out` (results). Running the project requires **AMPL** and **Gurobi**, Python dependencies (`pyodbc`, `pandas`) for data extraction and Microsoft Access for `.mdb` file access. Completed as part of University of Toronto’s MIE262 Operations Research, this project demonstrates practical applications of optimization techniques in production planning, with future extensions including dynamic pricing strategies and stochastic optimization to handle demand uncertainty.
+**Key Constraints:**
+- $10M raw materials budget
+- 72 machines × 12 hours/day × 28 days
+- 8 warehouses with capacity limits
+- 165 different raw material types
+- 557 shoe varieties to consider
+
+## Technical Approach
+
+The solution combines multiple technologies to create a comprehensive optimization framework:
+
+**Data Pipeline:**
+- **Java + SQL** → Extract historical demand from Access database (1997-2003)
+- **R** → Statistical forecasting with linear regression and missing value imputation
+- **AMPL** → Mixed integer programming model formulation
+- **Gurobi** → Commercial optimization solver
+
+**Model Structure:**
+- 565 decision variables (557 production + 8 warehouse binary)
+- Multi-constraint optimization across materials, capacity, labor, and storage
+- LP relaxation due to computational complexity
+
+## Results & Impact
+
+🎯 **Optimal Profit: $11,777,402.50**
+
+The solution strategically prioritizes high-margin shoes while accepting shortfalls on lower-margin products. Key insights from sensitivity analysis:
+
+| Resource | Status | Impact |
+|----------|--------|---------|
+| Raw Materials | **Bottleneck** | Primary profit constraint |
+| Machine Hours | Underutilized | No improvement from capacity increase |
+| Warehouse Space | Sufficient | Additional space unnecessary |
+| Budget | Adequate | More funding won't help without materials |
+
+**Business Recommendation:** Secure additional raw material suppliers for maximum profit impact.
+
+## Repository Structure
