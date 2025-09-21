@@ -16,19 +16,19 @@ WARP Shoe Company faced a production crisis in early 2006 when a major competito
 The solution combines multiple technologies to create a comprehensive optimization framework:
 
 **Data Pipeline:**
-- **Java + SQL** → Extract historical demand from Access database (1997-2003)
+- **SQL** → Extract historical demand from Access database (1997-2003)
 - **R** → Statistical forecasting with linear regression and missing value imputation
 - **AMPL** → Mixed integer programming model formulation
 - **Gurobi** → Commercial optimization solver
 
 **Model Structure:**
 - 565 decision variables (557 production + 8 warehouse binary)
-- Multi-constraint optimization across materials, capacity, labor, and storage
+- Multi-constraint optimization across materials, capacity, labor and storage
 - LP relaxation due to computational complexity
 
 ## Results & Impact
 
-🎯 **Optimal Profit: $11,777,402.50**
+🎯 **Optimal Profit: $11,055,800**
 
 The solution strategically prioritizes high-margin shoes while accepting shortfalls on lower-margin products. Key insights from sensitivity analysis:
 
