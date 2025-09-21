@@ -43,12 +43,12 @@ The solution strategically prioritizes high-margin shoes while accepting shortfa
 
 ## Repository Structure
 
+```
 ├── WARP_Shoes.dat     # Input data file
 ├── WARP_Shoes.mod     # Mathematical model definition
 ├── WARP_Shoes.out     # Solution results
 └── WARP_Shoes.run     # Execution script
-
-**To Run:** `ampl WARP_Shoes.run` (requires AMPL + Gurobi license)
+```
 
 ---
 
